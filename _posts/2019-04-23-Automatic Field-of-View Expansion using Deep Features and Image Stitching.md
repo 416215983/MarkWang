@@ -38,7 +38,7 @@ __主要框架__:VGG-16+NetVLAD层
 
 ![image-20200424024524077](/Users/mark/Library/Application Support/typora-user-images/image-20200424024524077.png)
 
-![image-20200424024524077](https://github.com/416215983/MarkWang/tree/master/images/markdownImg/image-20200424024524077.png)
+![image-20200424024524077](https://github.com/416215983/MarkWang/blob/master/images/markdownImg/image-20200424024524077.png)
 
 #### 图像检索
 
@@ -48,7 +48,7 @@ NetVLAD方法通过添加受VLAD3启发的池化层，将每个输入图像的�
 
 ![image-20200424030536075](/Users/mark/Library/Application Support/typora-user-images/image-20200424030536075.png)
 
-![image-20200424024524077](https://github.com/416215983/MarkWang/tree/master/images/markdownImg/image-20200424030536075.png)
+![image-20200424024524077](https://github.com/416215983/MarkWang/blob/master/images/markdownImg/image-20200424030536075.png)
 
 使用NetVLAD体系结构中的参数，我们可以为每幅图像生成全局特征。
 
@@ -61,6 +61,8 @@ NetVLAD方法通过添加受VLAD3启发的池化层，将每个输入图像的�
 采用APAP的图像拼接方法,使用移动直接线性变换(DLT)对不同的图像网格进行局部投影，是减少图像边界周围的重影伪影。缝合方法的思想使用位置依赖的单应性H 对每个像素x进行变换。
 
 ![image-20200424032529899](/Users/mark/Library/Application Support/typora-user-images/image-20200424032529899.png)
+
+![image-20200424024524077](https://github.com/416215983/MarkWang/blob/master/images/markdownImg/image-20200424032529899.png)
 
 #### 局限性
 
