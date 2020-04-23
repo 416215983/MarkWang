@@ -8,7 +8,7 @@ comments: true
 toc: true
 ---
 
-# Deep Feature Extraction for Panoramic Image Stitching
+Deep Feature Extraction for Panoramic Image Stitching
 
 用于全景图像拼接的深度特征提取  
 

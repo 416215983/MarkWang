@@ -8,7 +8,7 @@ comments: true
 toc: true
 ---
 
-# Automatic Field-of-View Expansion using Deep Features and Image Stitching
+Automatic Field-of-View Expansion using Deep Features and Image Stitching
 
 基于深度特征和图像拼接的视野自动扩展
 
@@ -38,6 +38,8 @@ __主要框架__:VGG-16+NetVLAD层
 
 ![image-20200424024524077](/Users/mark/Library/Application Support/typora-user-images/image-20200424024524077.png)
 
+![image-20200424024524077](https://github.com/416215983/MarkWang/tree/master/images/markdownImg/image-20200424024524077.png)
+
 #### 图像检索
 
 将NetVLAD层集成到CNN架构中，删除了最后一个卷积层，并附加了NetVLAD层作为替换层，CNN架构为VGG-16，用于训练的数据集。
@@ -45,6 +47,8 @@ __主要框架__:VGG-16+NetVLAD层
 NetVLAD方法通过添加受VLAD3启发的池化层，将每个输入图像的提取局部描述子聚合到单个全局描述子中。
 
 ![image-20200424030536075](/Users/mark/Library/Application Support/typora-user-images/image-20200424030536075.png)
+
+![image-20200424024524077](https://github.com/416215983/MarkWang/tree/master/images/markdownImg/image-20200424030536075.png)
 
 使用NetVLAD体系结构中的参数，我们可以为每幅图像生成全局特征。
 
