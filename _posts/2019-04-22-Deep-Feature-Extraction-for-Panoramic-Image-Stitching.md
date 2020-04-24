@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Deep Feature Extraction for Panoramic Image Stitching
-date: 2019-04-22
+date: 2020-04-22
 Author: Mark Wang
 tags: [Deep Learning, Feature, Image Stitching, ResNet]
 comments: true
@@ -44,4 +44,4 @@ __图像增强__  在实验中，应用了以下几种数据增强：
 
 我们使用了多种重采样技术，例如旋转，拉伸，剪切：-10°至10°角度的随机旋转，-10°至10°角度的随机剪切；随机剪切拉伸，拉伸因子在5°到15°之间。
 
-![image-20200424013203285](/images/image-20200424013203285.png)
+![image-20200424013203285](https://github.com/416215983/MarkWang/blob/master/_posts//images/image-20200424013203285.png)
