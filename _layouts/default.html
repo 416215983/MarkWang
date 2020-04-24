@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
   {% include head.html %}
   <body>
     {% include nav.html %}
@@ -14,6 +15,13 @@
       <div class="container">
         {{ content }}
       </div>
+        <div style="margin-left: 15px; font-size: 10pt">
+            <span id="busuanzi_container_site_pv">
+        本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span><span id="busuanzi_container_site_uv">
+        本站访客数<span id="busuanzi_value_site_uv"></span>人次
+        </span>
+        </div>
     </div>
 
     {% include analytics.html %}
@@ -28,12 +36,6 @@
   <div class="wrapper-footer-mobile">
     <footer class="footer">
       {% include footer.html %}
-        <span id="busuanzi_container_site_pv">
-    <p>本站总访问量</p><span id="busuanzi_value_site_pv"></span><p>次</p>
-</span>
-        <span id="busuanzi_container_site_uv">
-  <p>本站访客数</p><span id="busuanzi_value_site_uv"></span><p>人次</p>
-</span>
     </footer>
 
 

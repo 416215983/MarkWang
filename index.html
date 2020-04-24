@@ -7,7 +7,7 @@ layout: default
 {% endif %}
 
 <div class="posts">
-  
+
   {% for post in site.posts %}
     {% if post.pinned==true %}
       <article class="post pinned">
@@ -16,7 +16,7 @@ layout: default
         </h1>
 
         <div clsss="meta">
-          
+
           <span class="author">
             {{ post.author }}
           </span>
@@ -48,7 +48,7 @@ layout: default
       </article>
     {% endif %}
   {% endfor %}
-  
+
   {% for post in paginator.posts %}
     {% unless post.pinned %}
     <article class="post">
@@ -57,11 +57,11 @@ layout: default
       </h1>
 
       <div clsss="meta">
-        
+
         <span class="author">
           {{ post.author }}
         </span>
-            
+
         <span class="date">
           {{ post.date | date: "%Y-%m-%d" }}
         </span>
@@ -94,6 +94,7 @@ layout: default
         ← 上一页
       </a>
     </span>
+
   {% endif %}
   {% if paginator.next_page %}
     <span class="next">

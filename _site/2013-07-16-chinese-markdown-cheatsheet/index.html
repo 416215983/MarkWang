@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <head>
+  <title>Markdown语法简介 – MarkWang – MarkWang个人博客</title>
+
+      <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="MarkWang个人博客">
+    <meta property="og:description" content="MarkWang个人博客" />
+    
+    <meta name="author" content="MarkWang" />
+
+    
+    <meta property="og:title" content="Markdown语法简介" />
+    <meta property="twitter:title" content="Markdown语法简介" />
+    
+  <!-- Async font loading -->
+<script>
+  window.WebFontConfig = {
+      custom: {
+          families: ['Spoqa Han Sans:100,300,400,700'],
+          urls: ['https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css']
+      },
+      timeout: 60000
+  };
+  (function(d) {
+      var wf = d.createElement('script'), s = d.scripts[0];
+      wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js';
+      s.parentNode.insertBefore(wf, s);
+  })(document);
+</script>
+
+<!--adobe fonts-->
+<script>
+    (function(d) {
+      var config = {
+        kitId: 'vbt3gjx',
+        scriptTimeout: 3000,
+        async: true
+      },
+      h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+    })(document);
+</script> 
+
+  <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link rel="stylesheet" type="text/css" href="/MarkWang/style.css" />
+  <link rel="alternate" type="application/rss+xml" title="MarkWang - MarkWang个人博客" href="/MarkWang/feed.xml" />
+  <link rel="shortcut icon" href="https://i.loli.net/2020/03/05/GXEHsRbQyfKkdIN.jpg">
+  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        inlineMath: [['$','$']]
+      }
+    });
+  </script>
+
+  <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+
+</head>
+
+  <body>
+    <div class="wrapper-sidebar">
+  <header class="sidebar clearfix">
+    <div class="site-info">
+      
+        <a href="/MarkWang/" class="site-avatar"><img src="https://i.loli.net/2020/03/05/GXEHsRbQyfKkdIN.jpg" /></a>
+      
+      <h1 class="site-name"><a href="/MarkWang/">MarkWang</a></h1>
+      <p class="site-description">MarkWang个人博客</p>
+    </div>
+  </header>
+
+  <div class="navlist">
+    <nav>
+      
+      
+      <a href="/MarkWang/">首页</a>
+      
+      
+      
+      <a href="/MarkWang/about">关于</a>
+      
+      
+      
+      <a href="/MarkWang/archive">归档</a>
+      
+      
+      
+      <a href="/MarkWang/tags">标签</a>
+      
+      
+    </nav>
+  </div>
+
+  <div class="wrapper-footer-desktop">
+    <footer class="footer">
+      <!-- Refer to https://codepen.io/ruandre/pen/howFi -->
+<ul class="svg-icon">
+
+  
+  <li><a href="https://www.weibo.com/1607822463" class="icon-1 weibo" title="Weibo"><svg viewBox="0 0 512 512"><path d="M407 177.6c7.6-24-13.4-46.8-37.4-41.7-22 4.8-28.8-28.1-7.1-32.8 50.1-10.9 92.3 37.1 76.5 84.8-6.8 21.2-38.8 10.8-32-10.3zM214.8 446.7C108.5 446.7 0 395.3 0 310.4c0-44.3 28-95.4 76.3-143.7C176 67 279.5 65.8 249.9 161c-4 13.1 12.3 5.7 12.3 6 79.5-33.6 140.5-16.8 114 51.4-3.7 9.4 1.1 10.9 8.3 13.1 135.7 42.3 34.8 215.2-169.7 215.2zm143.7-146.3c-5.4-55.7-78.5-94-163.4-85.7-84.8 8.6-148.8 60.3-143.4 116s78.5 94 163.4 85.7c84.8-8.6 148.8-60.3 143.4-116zM347.9 35.1c-25.9 5.6-16.8 43.7 8.3 38.3 72.3-15.2 134.8 52.8 111.7 124-7.4 24.2 29.1 37 37.4 12 31.9-99.8-55.1-195.9-157.4-174.3zm-78.5 311c-17.1 38.8-66.8 60-109.1 46.3-40.8-13.1-58-53.4-40.3-89.7 17.7-35.4 63.1-55.4 103.4-45.1 42 10.8 63.1 50.2 46 88.5zm-86.3-30c-12.9-5.4-30 .3-38 12.9-8.3 12.9-4.3 28 8.6 34 13.1 6 30.8.3 39.1-12.9 8-13.1 3.7-28.3-9.7-34zm32.6-13.4c-5.1-1.7-11.4.6-14.3 5.4-2.9 5.1-1.4 10.6 3.7 12.9 5.1 2 11.7-.3 14.6-5.4 2.8-5.2 1.1-10.9-4-12.9z"></svg></a></li>
+  
+  
+  
+
+  
+
+  
+  <li><a href="mailto:416215983@qq.com" class="icon-8 email" title="Email"><svg viewBox="0 0 512 512"><path d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"/></svg><!--[if lt IE 9]><em>Email</em><![endif]--></a></li>
+  
+
+  
+
+  
+
+  
+  <li><a href="https://github.com/416215983" class="icon-13 github" title="GitHub"><svg viewBox="0 0 512 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg><!--[if lt IE 9]><em>GitHub</em><![endif]--></a></li>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</ul>
+
+
+
+<p>Copyright (c) 2020 来自MarkWang</p>
+
+
+
+
+    </footer>
+  </div>
+</div>
+
+
+    
+      <aside class="toc">
+        <ul>
+  <li><a href="#">Markdown语法简介</a>
+    <ul>
+      <li><a href="#分段与分行">分段与分行</a></li>
+      <li><a href="#标题">标题</a></li>
+      <li><a href="#引用">引用</a></li>
+      <li><a href="#多重引用">多重引用</a></li>
+      <li><a href="#列表">列表</a></li>
+      <li><a href="#代码块">代码块</a></li>
+      <li><a href="#横线">横线</a></li>
+      <li><a href="#链接">链接</a></li>
+      <li><a href="#强调">强调</a></li>
+      <li><a href="#内嵌代码">内嵌代码</a></li>
+      <li><a href="#图片">图片</a></li>
+      <li><a href="#转义字符">转义字符</a></li>
+    </ul>
+  </li>
+</ul>
+      </aside>
+    
+
+    <div id="main" role="main" class="wrapper-content">
+      <div class="container">
+        <article class="posts">
+  <h1>Markdown语法简介</h1>
+
+  <div clsss="meta">
+    <span class="author">
+      
+    </span>
+
+    <span class="date">
+      2013-07-16
+    </span>
+
+    <ul class="tag">
+      
+      <li>
+        <a href="http://localhost:4000/MarkWang/tags#sample">
+          sample
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:4000/MarkWang/tags#markdown">
+          markdown
+        </a>
+      </li>
+      
+    </ul>
+      <div>
+          <span id="busuanzi_container_page_pv">
+            <p>本文总阅读量<span id="busuanzi_value_page_pv"></span>次</p>
+          </span>
+      </div>
+
+  </div>
+
+  <div class="entry">
+    <p>本中文版Markdown语法简介来自博客 <a href="https://blog.shengbin.me/posts/markdown-syntax">https://blog.shengbin.me/posts/markdown-syntax</a></p>
+
+<p>Markdown语法的完整介绍在这里：<a href="http://daringfireball.net/projects/markdown/syntax">http://daringfireball.net/projects/markdown/syntax</a>。下面整理的这些为了方便写博客时参考。</p>
+
+<h2 id="分段与分行">分段与分行</h2>
+
+<p>以一个或多个空行来隔开段落；以两个或多个空格来段内换行。</p>
+
+<h2 id="标题">标题</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>This is an H1
+=============
+
+This is an H2
+-------------
+
+# This is an H1
+
+##  This is an H2
+
+######  This is an H6
+
+</code></pre></div></div>
+
+<h2 id="引用">引用</h2>
+
+<p>在每一行前面写一个<code class="language-plaintext highlighter-rouge">&gt;</code>：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
+&gt; consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
+&gt; Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
+&gt;
+&gt; Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
+&gt; id sem consectetuer libero luctus adipiscing.
+
+</code></pre></div></div>
+
+<p>效果：</p>
+
+<blockquote>
+  <p>This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.</p>
+
+  <p>Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse id sem consectetuer libero luctus adipiscing.</p>
+</blockquote>
+
+<p>或者在每一段前面写一个<code class="language-plaintext highlighter-rouge">&gt;</code>：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
+consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
+Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
+
+&gt; Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
+id sem consectetuer libero luctus adipiscing.
+
+</code></pre></div></div>
+
+<h2 id="多重引用">多重引用</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; This is the first level of quoting.
+&gt;
+&gt; &gt; This is nested blockquote.
+&gt;
+&gt; Back to the first level.
+
+</code></pre></div></div>
+
+<p>效果：</p>
+
+<blockquote>
+  <p>This is the first level of quoting.</p>
+
+  <blockquote>
+    <p>This is nested blockquote.</p>
+  </blockquote>
+
+  <p>Back to the first level.</p>
+</blockquote>
+
+<h2 id="列表">列表</h2>
+
+<p>列表项占一行，以*、+、-开头即可：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>*   Red
+*   Green
+*   Blue
+
+</code></pre></div></div>
+
+<p>效果：</p>
+
+<ul>
+  <li>Red</li>
+  <li>Green</li>
+  <li>Blue</li>
+</ul>
+
+<p>有序列表只需要将上述标记符换成数字加句点。而且顺序由书写顺序决定，与数字无关，但数字需要从1开始。例如：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1\.  Bird
+3.  McHale
+2.  Parish
+
+</code></pre></div></div>
+
+<p>效果：</p>
+
+<ol>
+  <li>Bird</li>
+  <li>McHale</li>
+  <li>Parish</li>
+</ol>
+
+<p>每一个列表项可以多行：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>*   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,
+viverra nec, fringilla in, laoreet vitae, risus.
+*   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.
+Suspendisse id sem consectetuer libero luctus adipiscing.
+
+</code></pre></div></div>
+
+<p>效果：</p>
+
+<ul>
+  <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.</li>
+  <li>Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse id sem consectetuer libero luctus adipiscing.</li>
+</ul>
+
+<h2 id="代码块">代码块</h2>
+
+<p>每一行前面缩进四个或以上个空格，就认为是开始了一段代码块。代码块内原样输出。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>This is a normal paragraph:
+
+    This is a code block.
+
+</code></pre></div></div>
+
+<p>效果：</p>
+
+<p>This is a normal paragraph:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>This is a code block.
+
+</code></pre></div></div>
+
+<h2 id="横线">横线</h2>
+
+<p>三个或更多个<code class="language-plaintext highlighter-rouge">*</code>、<code class="language-plaintext highlighter-rouge">-</code>（它们之间可以有空格）会产生横线：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* * *
+
+</code></pre></div></div>
+
+<p>效果：</p>
+
+<hr />
+
+<h2 id="链接">链接</h2>
+
+<p>内嵌链接：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>I get 10 times more traffic from [Google](http://google.com/ "Google")
+than from [Yahoo](http://search.yahoo.com/ "Yahoo Search") or
+[MSN](http://search.msn.com/ "MSN Search").
+
+</code></pre></div></div>
+
+<p>或参考文献式链接（缺省的链接标记认为与文本一致）：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>I get 10 times more traffic from [Google] [1] than from
+[Yahoo] [2] or [MSN] [3].
+
+  [1]: http://google.com/        "Google"
+  [2]: http://search.yahoo.com/  "Yahoo Search"
+  [3]: http://search.msn.com/    "MSN Search"
+
+I get 10 times more traffic from [Google][] than from
+[Yahoo][] or [MSN][].
+
+  [google]: http://google.com/        "Google"
+  [yahoo]:  http://search.yahoo.com/  "Yahoo Search"
+  [msn]:    http://search.msn.com/    "MSN Search"
+
+</code></pre></div></div>
+
+<p>效果：</p>
+
+<p>I get 10 times more traffic from <a href="http://google.com/" title="Google">Google</a> than from <a href="http://search.yahoo.com/" title="Yahoo Search">Yahoo</a> or <a href="http://search.msn.com/" title="MSN Search">MSN</a>.</p>
+
+<p>如果直接以链接地址作为链接文本，可以用如下快捷写法：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;http://www.shengbin.me&gt; 效果：
+
+</code></pre></div></div>
+
+<p><a href="http://www.shengbin.me/">http://www.shengbin.me</a></p>
+
+<h2 id="强调">强调</h2>
+
+<p>单个<code class="language-plaintext highlighter-rouge">*</code>或<code class="language-plaintext highlighter-rouge">_</code>产生斜体，两个（<code class="language-plaintext highlighter-rouge">**</code>、<code class="language-plaintext highlighter-rouge">__</code>）则产生粗体。例如：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>*like* _this_
+
+**like** **this**
+
+</code></pre></div></div>
+
+<p>效果：</p>
+
+<p><em>like</em> <em>this</em></p>
+
+<p><strong>like</strong> <strong>this</strong></p>
+
+<h2 id="内嵌代码">内嵌代码</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>code: `echo hello`
+
+</code></pre></div></div>
+
+<p>效果：</p>
+
+<p>code: <code class="language-plaintext highlighter-rouge">echo hello</code></p>
+
+<h2 id="图片">图片</h2>
+
+<p>图片与链接类似，只需在文本前面加上感叹号<code class="language-plaintext highlighter-rouge">!</code>即可。图片位置和大小无法通过Markdown来指定。</p>
+
+<h2 id="转义字符">转义字符</h2>
+
+<p>以下特殊字符需要用<code class="language-plaintext highlighter-rouge">\</code>转义得到。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\   backslash
+`   backtick
+*   asterisk
+_   underscore
+{}  curly braces
+[]  square brackets
+()  parentheses
+#   hash mark
++   plus sign
+-   minus sign (hyphen)
+.   dot
+!   exclamation mark
+</code></pre></div></div>
+
+  </div>
+
+  
+<div class="comments">
+	<div id="disqus_thread"></div>
+	<script type="text/javascript">
+
+	    var disqus_shortname = 'MarkWang';
+
+	    (function() {
+	        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	    })();
+
+	</script>
+	<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+  
+</article>
+
+<div class="pagination">
+  
+  
+
+</div>
+
+      </div>
+        <div style="margin-left: 15px; font-size: 10pt">
+            <span id="busuanzi_container_site_pv">
+        本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span><span id="busuanzi_container_site_uv">
+        本站访客数<span id="busuanzi_value_site_uv"></span>人次
+        </span>
+        </div>
+    </div>
+
+    
+
+  </body>
+
+  
+  <script>
+    document.getElementById("main").classList.add("withtoc");
+  </script>
+  
+
+  <div class="wrapper-footer-mobile">
+    <footer class="footer">
+      <!-- Refer to https://codepen.io/ruandre/pen/howFi -->
+<ul class="svg-icon">
+
+  
+  <li><a href="https://www.weibo.com/1607822463" class="icon-1 weibo" title="Weibo"><svg viewBox="0 0 512 512"><path d="M407 177.6c7.6-24-13.4-46.8-37.4-41.7-22 4.8-28.8-28.1-7.1-32.8 50.1-10.9 92.3 37.1 76.5 84.8-6.8 21.2-38.8 10.8-32-10.3zM214.8 446.7C108.5 446.7 0 395.3 0 310.4c0-44.3 28-95.4 76.3-143.7C176 67 279.5 65.8 249.9 161c-4 13.1 12.3 5.7 12.3 6 79.5-33.6 140.5-16.8 114 51.4-3.7 9.4 1.1 10.9 8.3 13.1 135.7 42.3 34.8 215.2-169.7 215.2zm143.7-146.3c-5.4-55.7-78.5-94-163.4-85.7-84.8 8.6-148.8 60.3-143.4 116s78.5 94 163.4 85.7c84.8-8.6 148.8-60.3 143.4-116zM347.9 35.1c-25.9 5.6-16.8 43.7 8.3 38.3 72.3-15.2 134.8 52.8 111.7 124-7.4 24.2 29.1 37 37.4 12 31.9-99.8-55.1-195.9-157.4-174.3zm-78.5 311c-17.1 38.8-66.8 60-109.1 46.3-40.8-13.1-58-53.4-40.3-89.7 17.7-35.4 63.1-55.4 103.4-45.1 42 10.8 63.1 50.2 46 88.5zm-86.3-30c-12.9-5.4-30 .3-38 12.9-8.3 12.9-4.3 28 8.6 34 13.1 6 30.8.3 39.1-12.9 8-13.1 3.7-28.3-9.7-34zm32.6-13.4c-5.1-1.7-11.4.6-14.3 5.4-2.9 5.1-1.4 10.6 3.7 12.9 5.1 2 11.7-.3 14.6-5.4 2.8-5.2 1.1-10.9-4-12.9z"></svg></a></li>
+  
+  
+  
+
+  
+
+  
+  <li><a href="mailto:416215983@qq.com" class="icon-8 email" title="Email"><svg viewBox="0 0 512 512"><path d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"/></svg><!--[if lt IE 9]><em>Email</em><![endif]--></a></li>
+  
+
+  
+
+  
+
+  
+  <li><a href="https://github.com/416215983" class="icon-13 github" title="GitHub"><svg viewBox="0 0 512 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg><!--[if lt IE 9]><em>GitHub</em><![endif]--></a></li>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</ul>
+
+
+
+<p>Copyright (c) 2020 来自MarkWang</p>
+
+
+
+
+    </footer>
+
+
+</html>

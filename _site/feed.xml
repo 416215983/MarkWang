@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/MarkWang/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/MarkWang/" rel="alternate" type="text/html" /><updated>2020-04-25T03:48:18+08:00</updated><id>http://localhost:4000/MarkWang/feed.xml</id><title type="html">MarkWang</title><subtitle>MarkWang个人博客</subtitle><entry><title type="html">Automatic Field-of-View Expansion using Deep Features and Image Stitching</title><link href="http://localhost:4000/MarkWang/Automatic-Field-of-View-Expansion-using-Deep-Features-and-Image-Stitching/" rel="alternate" type="text/html" title="Automatic Field-of-View Expansion using Deep Features and Image Stitching" /><published>2020-04-23T00:00:00+08:00</published><updated>2020-04-23T00:00:00+08:00</updated><id>http://localhost:4000/MarkWang/Automatic%20Field-of-View%20Expansion%20using%20Deep%20Features%20and%20Image%20Stitching</id><content type="html" xml:base="http://localhost:4000/MarkWang/Automatic-Field-of-View-Expansion-using-Deep-Features-and-Image-Stitching/">&lt;p&gt;Automatic Field-of-View Expansion using Deep Features and Image Stitching&lt;/p&gt;
+
+&lt;p&gt;基于深度特征和图像拼接的视野自动扩展&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;缺点&lt;/strong&gt;:图像必须有良好特征，且具有大量特征的数据集&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;使用场合&lt;/strong&gt;:对纪念碑或建筑的视野扩展&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;关键技术&lt;/strong&gt;:NetVLAD层提取全局的特征向量&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;主要框架&lt;/strong&gt;:VGG-16+NetVLAD层&lt;/p&gt;
+
+&lt;h4 id=&quot;简介&quot;&gt;简介&lt;/h4&gt;
+
+&lt;h5 id=&quot;该方法分为图像检索和图像拼接两个步骤&quot;&gt;该方法分为图像检索和图像拼接两个步骤。&lt;/h5&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;我们为指定的地标生成字典。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;对于字典中的每幅图像，使用训练好的NetVLAD描述符生成全局特征向量。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;基于全局特征向量的相似性，对输入图像进行K近邻搜索。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;K个图像被用作用于视场扩展的候选图像。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;对于每个候选图像，使用特征匹配来评估细节相似度。如果匹配特征的数量超过阈值，使用图像拼接方法来扩大视野。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/416215983/MarkWang/master/_posts/images/image-20200424024524077.png&quot; alt=&quot;image-20200424024524077&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;图像检索&quot;&gt;图像检索&lt;/h4&gt;
+
+&lt;p&gt;将NetVLAD层集成到CNN架构中，删除了最后一个卷积层，并附加了NetVLAD层作为替换层，CNN架构为VGG-16，用于训练的数据集。&lt;/p&gt;
+
+&lt;p&gt;NetVLAD方法通过添加受VLAD3启发的池化层，将每个输入图像的提取局部描述子聚合到单个全局描述子中。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/416215983/MarkWang/master/_posts/images/image-20200424030536075.png&quot; alt=&quot;image-20200424030536075&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;使用NetVLAD体系结构中的参数，我们可以为每幅图像生成全局特征。&lt;/p&gt;
+
+&lt;p&gt;因此，我们可以搜索全局特征相似度高的候选图像。对于每个候选图像，提取SIFT局部特征以衡量是否可以同时拼接两幅图像。&lt;/p&gt;
+
+&lt;p&gt;我们测量输入图像和候选图像之间对应的特征数量。采用二值化阈值来判断候选图像是否拼接。&lt;/p&gt;
+
+&lt;h4 id=&quot;图像拼接&quot;&gt;图像拼接&lt;/h4&gt;
+
+&lt;p&gt;采用APAP的图像拼接方法,使用移动直接线性变换(DLT)对不同的图像网格进行局部投影，是减少图像边界周围的重影伪影。缝合方法的思想使用位置依赖的单应性H 对每个像素x进行变换。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/416215983/MarkWang/master/_posts/images/image-20200424032529899.png&quot; alt=&quot;image-20200424032529899&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;局限性&quot;&gt;局限性&lt;/h4&gt;
+
+&lt;p&gt;该方法对提取的良好特征具有较高的依赖性，可以拼接成一对图像。因此，它只能应用于具有大量特征的数据集，例如纪念碑或建筑。&lt;/p&gt;</content><author><name></name></author><category term="Deep Learning" /><category term="Feature" /><category term="Image Stitching" /><category term="VGG" /><category term="NetVLAD" /><summary type="html">Automatic Field-of-View Expansion using Deep Features and Image Stitching 基于深度特征和图像拼接的视野自动扩展 缺点:图像必须有良好特征，且具有大量特征的数据集 使用场合:对纪念碑或建筑的视野扩展 关键技术:NetVLAD层提取全局的特征向量 主要框架:VGG-16+NetVLAD层 简介 该方法分为图像检索和图像拼接两个步骤。 我们为指定的地标生成字典。 对于字典中的每幅图像，使用训练好的NetVLAD描述符生成全局特征向量。 基于全局特征向量的相似性，对输入图像进行K近邻搜索。 K个图像被用作用于视场扩展的候选图像。 对于每个候选图像，使用特征匹配来评估细节相似度。如果匹配特征的数量超过阈值，使用图像拼接方法来扩大视野。 图像检索 将NetVLAD层集成到CNN架构中，删除了最后一个卷积层，并附加了NetVLAD层作为替换层，CNN架构为VGG-16，用于训练的数据集。 NetVLAD方法通过添加受VLAD3启发的池化层，将每个输入图像的提取局部描述子聚合到单个全局描述子中。 使用NetVLAD体系结构中的参数，我们可以为每幅图像生成全局特征。 因此，我们可以搜索全局特征相似度高的候选图像。对于每个候选图像，提取SIFT局部特征以衡量是否可以同时拼接两幅图像。 我们测量输入图像和候选图像之间对应的特征数量。采用二值化阈值来判断候选图像是否拼接。 图像拼接 采用APAP的图像拼接方法,使用移动直接线性变换(DLT)对不同的图像网格进行局部投影，是减少图像边界周围的重影伪影。缝合方法的思想使用位置依赖的单应性H 对每个像素x进行变换。 局限性 该方法对提取的良好特征具有较高的依赖性，可以拼接成一对图像。因此，它只能应用于具有大量特征的数据集，例如纪念碑或建筑。</summary></entry><entry><title type="html">Deep Feature Extraction for Panoramic Image Stitching</title><link href="http://localhost:4000/MarkWang/Deep-Feature-Extraction-for-Panoramic-Image-Stitching/" rel="alternate" type="text/html" title="Deep Feature Extraction for Panoramic Image Stitching" /><published>2020-04-22T00:00:00+08:00</published><updated>2020-04-22T00:00:00+08:00</updated><id>http://localhost:4000/MarkWang/Deep-Feature-Extraction-for-Panoramic-Image-Stitching</id><content type="html" xml:base="http://localhost:4000/MarkWang/Deep-Feature-Extraction-for-Panoramic-Image-Stitching/">&lt;p&gt;Deep Feature Extraction for Panoramic Image Stitching&lt;/p&gt;
+
+&lt;p&gt;用于全景图像拼接的深度特征提取&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;使用场合&lt;/strong&gt;:高分辨率全景图像拼接&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;关键技术&lt;/strong&gt;:选择场景的矩形区域从训练图像中选择样本，基于RGB、HSL和Lab颜色空间计算感兴趣区域的颜色特征&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;主要框架&lt;/strong&gt;:ResNet网络模型&lt;/p&gt;
+
+&lt;h4 id=&quot;简介&quot;&gt;简介&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;应用场景&lt;/strong&gt;:本文提出了一种基于深度学习的图像拼接方法，应用于高分辨率全景图像来支持虚拟旅游风景交互。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;特征提取&lt;/strong&gt;:使用深度学习方法来提取图像的特征。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;特征定位&lt;/strong&gt;:此方法通过最大化图像间的图像块相似性度量来直接估计一对图像之间的特征位置。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;数据集&lt;/strong&gt;:从自然旅游场景中收集了大量高分辨率图像和视频进行训练和评估,该数据集是大图像，由46,000张高分辨率图像(5148×3,456)和150个高分辨率视频(1,920×1,088像素)组成。&lt;/p&gt;
+
+&lt;h4 id=&quot;特征提取&quot;&gt;特征提取&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;图像预处理&lt;/strong&gt; 将样本场景中通常相互重叠的多幅图像匹配到同一坐标系的。这些图像之间的空间关系可以是刚性变换、仿射、单应或复杂变形模型。在本研究中，我们致力于提高刚性变换(平移和旋转)情况下的精度，可以更好的支持全景高分辨率图像的拼接。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;样本选择&lt;/strong&gt; 通过选择场景的矩形区域从训练图像中选择样本。基于RGB、HSL和Lab颜色空间计算感兴趣区域的颜色特征。在HSL空间中，用均值和鲁棒性来表示斑点区域的颜色特征。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;训练模型&lt;/strong&gt; 在预训练ResNet的基础上，并对输入层和最后的全连接层改造，第一层的输入图像为[1920,1088,3]，采用7×7卷积块进行Batch Normalization和RELU. RANSAC剔除错误点。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;图像增强&lt;/strong&gt;  在实验中，应用了以下几种数据增强：&lt;/p&gt;
+
+&lt;p&gt;色彩归一化与均衡化：采集不同来源、不同光照条件、不同类型设备的人脸图像。&lt;/p&gt;
+
+&lt;p&gt;几何变换：仿射变换，如剪切、扭曲和缩放，随机扭曲笔划数据用于图像分类。因此，仿射变换非常适合于增加数据，以提高整体性能并减轻训练任务的过度拟合。&lt;/p&gt;
+
+&lt;p&gt;我们使用了多种重采样技术，例如旋转，拉伸，剪切：-10°至10°角度的随机旋转，-10°至10°角度的随机剪切；随机剪切拉伸，拉伸因子在5°到15°之间。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/416215983/MarkWang/master/_posts/images/image-20200424013203285.png&quot; alt=&quot;image-20200424013203285&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><category term="Deep Learning" /><category term="Feature" /><category term="Image Stitching" /><category term="ResNet" /><summary type="html">Deep Feature Extraction for Panoramic Image Stitching 用于全景图像拼接的深度特征提取 使用场合:高分辨率全景图像拼接 关键技术:选择场景的矩形区域从训练图像中选择样本，基于RGB、HSL和Lab颜色空间计算感兴趣区域的颜色特征 主要框架:ResNet网络模型 简介 应用场景:本文提出了一种基于深度学习的图像拼接方法，应用于高分辨率全景图像来支持虚拟旅游风景交互。 特征提取:使用深度学习方法来提取图像的特征。 特征定位:此方法通过最大化图像间的图像块相似性度量来直接估计一对图像之间的特征位置。 数据集:从自然旅游场景中收集了大量高分辨率图像和视频进行训练和评估,该数据集是大图像，由46,000张高分辨率图像(5148×3,456)和150个高分辨率视频(1,920×1,088像素)组成。 特征提取 图像预处理 将样本场景中通常相互重叠的多幅图像匹配到同一坐标系的。这些图像之间的空间关系可以是刚性变换、仿射、单应或复杂变形模型。在本研究中，我们致力于提高刚性变换(平移和旋转)情况下的精度，可以更好的支持全景高分辨率图像的拼接。 样本选择 通过选择场景的矩形区域从训练图像中选择样本。基于RGB、HSL和Lab颜色空间计算感兴趣区域的颜色特征。在HSL空间中，用均值和鲁棒性来表示斑点区域的颜色特征。 训练模型 在预训练ResNet的基础上，并对输入层和最后的全连接层改造，第一层的输入图像为[1920,1088,3]，采用7×7卷积块进行Batch Normalization和RELU. RANSAC剔除错误点。 图像增强 在实验中，应用了以下几种数据增强： 色彩归一化与均衡化：采集不同来源、不同光照条件、不同类型设备的人脸图像。 几何变换：仿射变换，如剪切、扭曲和缩放，随机扭曲笔划数据用于图像分类。因此，仿射变换非常适合于增加数据，以提高整体性能并减轻训练任务的过度拟合。 我们使用了多种重采样技术，例如旋转，拉伸，剪切：-10°至10°角度的随机旋转，-10°至10°角度的随机剪切；随机剪切拉伸，拉伸因子在5°到15°之间。</summary></entry><entry><title type="html">Firstblog</title><link href="http://localhost:4000/MarkWang/firstblog/" rel="alternate" type="text/html" title="Firstblog" /><published>2020-03-05T00:00:00+08:00</published><updated>2020-03-05T00:00:00+08:00</updated><id>http://localhost:4000/MarkWang/firstblog</id><content type="html" xml:base="http://localhost:4000/MarkWang/firstblog/">&lt;h1 id=&quot;个人博客的新开始&quot;&gt;个人博客的新开始&lt;/h1&gt;
+
+&lt;p&gt;测试一下新的博客是否能正常显示&lt;/p&gt;</content><author><name></name></author><summary type="html">个人博客的新开始 测试一下新的博客是否能正常显示</summary></entry></feed>

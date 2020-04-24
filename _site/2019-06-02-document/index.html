@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <head>
+  <title>LOFFER使用基础教程 – MarkWang – MarkWang个人博客</title>
+
+      <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="MarkWang个人博客">
+    <meta property="og:description" content="MarkWang个人博客" />
+    
+    <meta name="author" content="MarkWang" />
+
+    
+    <meta property="og:title" content="LOFFER使用基础教程" />
+    <meta property="twitter:title" content="LOFFER使用基础教程" />
+    
+  <!-- Async font loading -->
+<script>
+  window.WebFontConfig = {
+      custom: {
+          families: ['Spoqa Han Sans:100,300,400,700'],
+          urls: ['https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css']
+      },
+      timeout: 60000
+  };
+  (function(d) {
+      var wf = d.createElement('script'), s = d.scripts[0];
+      wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js';
+      s.parentNode.insertBefore(wf, s);
+  })(document);
+</script>
+
+<!--adobe fonts-->
+<script>
+    (function(d) {
+      var config = {
+        kitId: 'vbt3gjx',
+        scriptTimeout: 3000,
+        async: true
+      },
+      h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+    })(document);
+</script> 
+
+  <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link rel="stylesheet" type="text/css" href="/MarkWang/style.css" />
+  <link rel="alternate" type="application/rss+xml" title="MarkWang - MarkWang个人博客" href="/MarkWang/feed.xml" />
+  <link rel="shortcut icon" href="https://i.loli.net/2020/03/05/GXEHsRbQyfKkdIN.jpg">
+  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        inlineMath: [['$','$']]
+      }
+    });
+  </script>
+
+  <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+
+</head>
+
+  <body>
+    <div class="wrapper-sidebar">
+  <header class="sidebar clearfix">
+    <div class="site-info">
+      
+        <a href="/MarkWang/" class="site-avatar"><img src="https://i.loli.net/2020/03/05/GXEHsRbQyfKkdIN.jpg" /></a>
+      
+      <h1 class="site-name"><a href="/MarkWang/">MarkWang</a></h1>
+      <p class="site-description">MarkWang个人博客</p>
+    </div>
+  </header>
+
+  <div class="navlist">
+    <nav>
+      
+      
+      <a href="/MarkWang/">首页</a>
+      
+      
+      
+      <a href="/MarkWang/about">关于</a>
+      
+      
+      
+      <a href="/MarkWang/archive">归档</a>
+      
+      
+      
+      <a href="/MarkWang/tags">标签</a>
+      
+      
+    </nav>
+  </div>
+
+  <div class="wrapper-footer-desktop">
+    <footer class="footer">
+      <!-- Refer to https://codepen.io/ruandre/pen/howFi -->
+<ul class="svg-icon">
+
+  
+  <li><a href="https://www.weibo.com/1607822463" class="icon-1 weibo" title="Weibo"><svg viewBox="0 0 512 512"><path d="M407 177.6c7.6-24-13.4-46.8-37.4-41.7-22 4.8-28.8-28.1-7.1-32.8 50.1-10.9 92.3 37.1 76.5 84.8-6.8 21.2-38.8 10.8-32-10.3zM214.8 446.7C108.5 446.7 0 395.3 0 310.4c0-44.3 28-95.4 76.3-143.7C176 67 279.5 65.8 249.9 161c-4 13.1 12.3 5.7 12.3 6 79.5-33.6 140.5-16.8 114 51.4-3.7 9.4 1.1 10.9 8.3 13.1 135.7 42.3 34.8 215.2-169.7 215.2zm143.7-146.3c-5.4-55.7-78.5-94-163.4-85.7-84.8 8.6-148.8 60.3-143.4 116s78.5 94 163.4 85.7c84.8-8.6 148.8-60.3 143.4-116zM347.9 35.1c-25.9 5.6-16.8 43.7 8.3 38.3 72.3-15.2 134.8 52.8 111.7 124-7.4 24.2 29.1 37 37.4 12 31.9-99.8-55.1-195.9-157.4-174.3zm-78.5 311c-17.1 38.8-66.8 60-109.1 46.3-40.8-13.1-58-53.4-40.3-89.7 17.7-35.4 63.1-55.4 103.4-45.1 42 10.8 63.1 50.2 46 88.5zm-86.3-30c-12.9-5.4-30 .3-38 12.9-8.3 12.9-4.3 28 8.6 34 13.1 6 30.8.3 39.1-12.9 8-13.1 3.7-28.3-9.7-34zm32.6-13.4c-5.1-1.7-11.4.6-14.3 5.4-2.9 5.1-1.4 10.6 3.7 12.9 5.1 2 11.7-.3 14.6-5.4 2.8-5.2 1.1-10.9-4-12.9z"></svg></a></li>
+  
+  
+  
+
+  
+
+  
+  <li><a href="mailto:416215983@qq.com" class="icon-8 email" title="Email"><svg viewBox="0 0 512 512"><path d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"/></svg><!--[if lt IE 9]><em>Email</em><![endif]--></a></li>
+  
+
+  
+
+  
+
+  
+  <li><a href="https://github.com/416215983" class="icon-13 github" title="GitHub"><svg viewBox="0 0 512 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg><!--[if lt IE 9]><em>GitHub</em><![endif]--></a></li>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</ul>
+
+
+
+<p>Copyright (c) 2020 来自MarkWang</p>
+
+
+
+
+    </footer>
+  </div>
+</div>
+
+
+    
+      <aside class="toc">
+        <ul>
+  <li><a href="#">LOFFER使用基础教程</a>
+    <ul>
+      <li><a href="#注意">注意</a></li>
+      <li><a href="#图文教程">图文教程</a>
+        <ul>
+          <li><a href="#第一步-使用这个template">第一步 使用这个template</a></li>
+          <li><a href="#第二步-设置站点信息">第二步 设置站点信息</a></li>
+          <li><a href="#第三步-发布博文">第三步 发布博文</a></li>
+          <li><a href="#可选图片怎么办">可选：图片怎么办？</a></li>
+          <li><a href="#可选添加评论区">可选：添加评论区</a>
+            <ul>
+              <li><a href="#disqus">Disqus</a></li>
+              <li><a href="#gitalk">Gitalk</a></li>
+            </ul>
+          </li>
+          <li><a href="#导入lofter的内容">导入LOFTER的内容</a></li>
+        </ul>
+      </li>
+      <li><a href="#致谢">致谢</a></li>
+      <li><a href="#帮助这个项目">帮助这个项目</a></li>
+    </ul>
+  </li>
+</ul>
+      </aside>
+    
+
+    <div id="main" role="main" class="wrapper-content">
+      <div class="container">
+        <article class="posts">
+  <h1>LOFFER使用基础教程</h1>
+
+  <div clsss="meta">
+    <span class="author">
+      来自中世界
+    </span>
+
+    <span class="date">
+      2019-06-02
+    </span>
+
+    <ul class="tag">
+      
+      <li>
+        <a href="http://localhost:4000/MarkWang/tags#sample">
+          sample
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:4000/MarkWang/tags#document">
+          document
+        </a>
+      </li>
+      
+    </ul>
+      <div>
+          <span id="busuanzi_container_page_pv">
+            <p>本文总阅读量<span id="busuanzi_value_page_pv"></span>次</p>
+          </span>
+      </div>
+
+  </div>
+
+  <div class="entry">
+    <p>LOFFER是个可以帮助你get off from LOFTER的软件（我知道这个pun很烂）。</p>
+
+<p>这是一个可以直接发布在GitHub page的Jekyll博客，你不需要编写代码或使用命令行即可配置属于你的LOFFER。</p>
+
+<p>本文为针对完全没有代码基础的朋友的基础教程。</p>
+
+<h2 id="注意">注意</h2>
+
+<p>LOFFER是一个<strong>博客模板</strong>，使用GitHub Pages发布个人博客是没有任何问题的。 <strong>但是:</strong></p>
+
+<ul>
+  <li><strong>请勿发布成人向内容</strong></li>
+  <li><strong>不要将大量图片上传到GitHub</strong></li>
+  <li><strong>不要用我的Discus账户，请配置你自己的，本文档中有教程</strong></li>
+</ul>
+
+<p>如有疑问，请阅读<a href="https://pages.github.com/">GitHub Pages官方说明</a>。</p>
+
+<h2 id="图文教程">图文教程</h2>
+
+<p>首先，这个博客主题适应手机阅读，但是，要使用它建立你自己的博客，你需要上电脑操作。</p>
+
+<h3 id="第一步-使用这个template">第一步 使用这个template</h3>
+
+<p>请点击<a href="https://github.com/">GitHub</a>，注册一个GitHub账户，这是完全免费的，只要提供邮箱即可。</p>
+
+<p>现在你看到的LOFFER，是作为一个GitHub上的Repository（代码库）存在的，我将之设为可以作为template（模板），你可以用这个模板来生成一份自己的LOFFER。</p>
+
+<p>点击<a href="https://github.com/FromEndWorld/LOFFER">LOFFER</a>，进入LOFFER的GitHub Repository页面，然后点<strong>Use this template</strong>，如图所示。</p>
+
+<p><img src="https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/usetemplate.png" alt="img" /></p>
+
+<p>你会进入如下页面，请给你的博客起个名字，这里只能用字母和少数特殊字符，没有关系，这个名称并不影响你的博客页面显示。</p>
+
+<p><img src="https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/nameyourbolg.png" alt="img" /></p>
+
+<p>点击<strong>Create repository from template</strong>，你很快就会看到如下页面，GitHub已经将LOFFER中所有的文件复制到你的新代码库中。</p>
+
+<p>下一步，点击Settings，进入相关设置。</p>
+
+<p><img src="https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/Settings.png" alt="img" /></p>
+
+<p>向下拉页面，你会看到“GitHub Pages”，这是GitHub内置的网站host服务，选择master，如图所示：</p>
+
+<p><img src="https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/pages.png" alt="img" /></p>
+
+<p>在几秒钟后，刷新此页面，你通常会看到这个绿色的东西（如果没看到，多等一会），你的网站已经发布成功，点击这个链接，即可查看：</p>
+
+<p><img src="https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/published.png" alt="img" /></p>
+
+<p>你可能会看到网站长得很丑，这是因为样式表尚未从正确的地址加载，没关系，请继续下一步。</p>
+
+<h3 id="第二步-设置站点信息">第二步 设置站点信息</h3>
+
+<p>在你的博客的GitHub代码库页面里，选择Code，文件列表里选择_config.yml，点击打开，然后点击右上角笔形图标修改文档。</p>
+
+<p><img src="https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/config.png" alt="img" /></p>
+
+<p>关于如何修改站点信息，在文件内有文档说明。</p>
+
+<p>修改完成后，点击<strong>Commit changes</strong>（提交修改）。每次修改过代码库并且提交后，GitHub Pages都会自动重新发布网站，只要等上几分钟，再次刷新你的博客页面，就会看到你的修改了。这一修改完成后，你的博客站应该可以正常显示了。</p>
+
+<p>如果刷新看不到效果，请使用“强刷新”，一般来说按ctrl+R。</p>
+
+<p>还有一点，<strong>LOFFER使用的是MIT协议，大意就是全部开源随意使用，如果你要保留自己博文的权利，请编辑LICENSE文件，写上类似“博文作者保留权利”这样的内容。</strong></p>
+
+<h3 id="第三步-发布博文">第三步 发布博文</h3>
+
+<p>在你的博客的GitHub代码库页面里，点开_posts文件夹，这里面就是你的博客文章。</p>
+
+<p>这些文章使用的格式是Markdown，文件后缀名是md，这是一种非常简单易用的有格式文本标记语言，你应该已经注意到，在LOFFER自带的示例性博文中有一篇中文的<a href="https://fromendworld.github.io/LOFFER/chinese-markdown-cheatsheet/">Markdown语法介绍</a>。</p>
+
+<p>更简单的办法是使用<a href="https://typora.io/">Typora</a>，这是一个全图形化界面，全实时预览的Markdown写作软件，非常轻量，而且免费。</p>
+
+<p><img src="https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/Typora.png" alt="img" /></p>
+
+<p>在发布博文前，你需要在文章的头部添加这样的内容，包括你的文章标题，发布日期，作者名，和tag等。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+layout: post
+title: LOFFER文档
+date: 2019-06-02
+Author: 来自中世界
+categories: 
+tags: [sample, document]
+comments: true
+--- 
+</code></pre></div></div>
+
+<p>完成后，保存为.md文件，文件名是date-标题，例如 2019-06-02-document.md (注意这里的标题会成为这篇博文的链接，所以请使用字母而非中文，它不影响页面上显示的标题)，然后上传到_posts文件夹，再提交修改，很快就可以在博客上看到新文章了。</p>
+
+<h3 id="可选图片怎么办">可选：图片怎么办？</h3>
+
+<p>少量图片可以上传到images文件夹，然后在博文中添加。</p>
+
+<p>但是GitHub用来当做图床有滥用之嫌，如果你的博客以图片为主，建议选择外链图床，例如<a href="https://sm.ms/">sm.ms</a>就是和很好的选择。</p>
+
+<p>要寻找更适合自己的图床，敬请搜索一下。</p>
+
+<p>在博文中添加图片的Markdown语法是：<code class="language-plaintext highlighter-rouge">![图片名](URL)</code></p>
+
+<h3 id="可选添加评论区">可选：添加评论区</h3>
+
+<h4 id="disqus">Disqus</h4>
+
+<p>LOFFER支持Disqus评论，虽然Disqus很丑，但是它是免费的，设置起来又方便，因此大家也就不要嫌弃它。</p>
+
+<p><strong>注意：目前有一些LOFFER使用者没有修改示例站现有的Disqus配置，那么你用的就是我的Disqus站点，这样不好，不好……</strong></p>
+
+<p><strong>请根据一下教程配置你自己的站点。</strong></p>
+
+<p>首先，注册一个<a href="https://disqus.com/">Disqus</a>账户，我们可以选择这个免费方案：</p>
+
+<p><img src="https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/Disqus-plan.png" alt="img" /></p>
+
+<p>注册成功后，新建一个站点（site），以LOFFER为例设置步骤如下：</p>
+
+<p>首先站点名LOFFER，生成了shortname是loffer，类型可以随便选。</p>
+
+<p><img src="https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/Disqus-1.png" alt="img" /></p>
+
+<p>安装时选择Jekyll。</p>
+
+<p><img src="https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/Disqus-2.png" alt="img" /></p>
+
+<p>最后填入你的博客地址，语言可以选中文，点Complete，即可！</p>
+
+<p><img src="https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/Disqus-3.png" alt="img" /></p>
+
+<p>然后需要回到你的博客，修改_config.yml文件，在disqus字段填上你的shortname，commit，完成！</p>
+
+<h4 id="gitalk">Gitalk</h4>
+
+<p>新增内容，LOFFER 0.2.0版本支持Gitalk评论区（在LOFFER示例站中仍然是Disqus，可以在<a href="https://himring.top/gitalk/">我的博客</a>查看Gitalk的demo），设置方法如下：</p>
+
+<p>首先，创建一个<a href="https://github.com/settings/applications/new">OAuth application</a>, 设置如图：</p>
+
+<p><img src="https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/application_settings.png" alt="img" /></p>
+
+<p>点Register后就会看到你所需要的两个值，clientID和clientSecret，把它们复制到你的_config.yml文件中相应的字段：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gitalk:
+  clientID: &lt;你的clientID&gt;
+  clientSecret: &lt;你的clientSecret&gt;
+  repo: &lt;你的repository名称&gt;
+  owner: &lt;你的GitHub用户名&gt;
+</code></pre></div></div>
+
+<p>然后commit，你的Gitalk评论区就会出现了。第一次使用的时候，需要你来进入文章页，来初始化评论区，这一操作会在你的repository上创建一个Issue，此后的评论就是对这个Issue的回复。</p>
+
+<p>你可以进入你的repository的Issue页面，点<strong>Unsubscribe</strong>来避免收到大量相关邮件。</p>
+
+<p>注意：出于很明显的原因，最好不要同时添加Disqus和Gitalk评论区。</p>
+
+<h3 id="导入lofter的内容">导入LOFTER的内容</h3>
+
+<p>这部分由于LOFTER的导出文件十分<del>优秀</del>，需要另外解决。</p>
+
+<p>诸位可以使用我修改的脚本<a href="https://github.com/FromEndWorld/lofter2Jekyll">lofter2Jekyll</a>，功能为将lofter导出的文件转换成可用于Jekyll的MD文档，还可以将图片批量下载到本地。</p>
+
+<p>也可以使用<a href="http://underdream.lofter.com/post/38ea7d_1c5d8a983">墨问非名太太的脚本</a>，其中选择Jekyll输出即可。</p>
+
+<h2 id="致谢">致谢</h2>
+
+<ul>
+  <li><a href="https://github.com/jekyll/jekyll">Jekyll</a> - 这是本站存在的根基</li>
+  <li><a href="https://github.com/aweekj/kiko-now">Kiko-now</a> - 我首先是fork这个主题，然后再其上进行修改汉化，才有了LOFFER</li>
+  <li><a href="https://fontawesome.com/">Font Awesome</a> - 社交网络图标来自FontAwesome的免费开源内容</li>
+</ul>
+
+<h2 id="帮助这个项目">帮助这个项目</h2>
+
+<p>介绍更多人来使用它，摆脱lofter自由飞翔！</p>
+
+<p>当然如果单说写同人的话，我还是建议大家都去AO3，但是自家博客自己架也很酷炫，你还可以选择很多其他的Jeykll主题，GitHub上有很多，或者试试其他博客架设工具，例如Hexo，与代码斗其乐无穷。</p>
+
+<p>最后，回到<a href="https://github.com/FromEndWorld/LOFFER">LOFFER</a>，给我点一个☆吧！</p>
+
+<p><img src="https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/givemefive.png" alt="img" /></p>
+
+  </div>
+
+  
+<div class="comments">
+	<div id="disqus_thread"></div>
+	<script type="text/javascript">
+
+	    var disqus_shortname = 'MarkWang';
+
+	    (function() {
+	        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	    })();
+
+	</script>
+	<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+  
+</article>
+
+<div class="pagination">
+  
+  
+
+</div>
+
+      </div>
+        <div style="margin-left: 15px; font-size: 10pt">
+            <span id="busuanzi_container_site_pv">
+        本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span><span id="busuanzi_container_site_uv">
+        本站访客数<span id="busuanzi_value_site_uv"></span>人次
+        </span>
+        </div>
+    </div>
+
+    
+
+  </body>
+
+  
+  <script>
+    document.getElementById("main").classList.add("withtoc");
+  </script>
+  
+
+  <div class="wrapper-footer-mobile">
+    <footer class="footer">
+      <!-- Refer to https://codepen.io/ruandre/pen/howFi -->
+<ul class="svg-icon">
+
+  
+  <li><a href="https://www.weibo.com/1607822463" class="icon-1 weibo" title="Weibo"><svg viewBox="0 0 512 512"><path d="M407 177.6c7.6-24-13.4-46.8-37.4-41.7-22 4.8-28.8-28.1-7.1-32.8 50.1-10.9 92.3 37.1 76.5 84.8-6.8 21.2-38.8 10.8-32-10.3zM214.8 446.7C108.5 446.7 0 395.3 0 310.4c0-44.3 28-95.4 76.3-143.7C176 67 279.5 65.8 249.9 161c-4 13.1 12.3 5.7 12.3 6 79.5-33.6 140.5-16.8 114 51.4-3.7 9.4 1.1 10.9 8.3 13.1 135.7 42.3 34.8 215.2-169.7 215.2zm143.7-146.3c-5.4-55.7-78.5-94-163.4-85.7-84.8 8.6-148.8 60.3-143.4 116s78.5 94 163.4 85.7c84.8-8.6 148.8-60.3 143.4-116zM347.9 35.1c-25.9 5.6-16.8 43.7 8.3 38.3 72.3-15.2 134.8 52.8 111.7 124-7.4 24.2 29.1 37 37.4 12 31.9-99.8-55.1-195.9-157.4-174.3zm-78.5 311c-17.1 38.8-66.8 60-109.1 46.3-40.8-13.1-58-53.4-40.3-89.7 17.7-35.4 63.1-55.4 103.4-45.1 42 10.8 63.1 50.2 46 88.5zm-86.3-30c-12.9-5.4-30 .3-38 12.9-8.3 12.9-4.3 28 8.6 34 13.1 6 30.8.3 39.1-12.9 8-13.1 3.7-28.3-9.7-34zm32.6-13.4c-5.1-1.7-11.4.6-14.3 5.4-2.9 5.1-1.4 10.6 3.7 12.9 5.1 2 11.7-.3 14.6-5.4 2.8-5.2 1.1-10.9-4-12.9z"></svg></a></li>
+  
+  
+  
+
+  
+
+  
+  <li><a href="mailto:416215983@qq.com" class="icon-8 email" title="Email"><svg viewBox="0 0 512 512"><path d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"/></svg><!--[if lt IE 9]><em>Email</em><![endif]--></a></li>
+  
+
+  
+
+  
+
+  
+  <li><a href="https://github.com/416215983" class="icon-13 github" title="GitHub"><svg viewBox="0 0 512 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg><!--[if lt IE 9]><em>GitHub</em><![endif]--></a></li>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</ul>
+
+
+
+<p>Copyright (c) 2020 来自MarkWang</p>
+
+
+
+
+    </footer>
+
+
+</html>

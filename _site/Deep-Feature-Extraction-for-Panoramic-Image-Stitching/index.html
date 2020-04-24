@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <head>
+  <title>Deep Feature Extraction for Panoramic Image Stitching – MarkWang – MarkWang个人博客</title>
+
+      <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="Deep Feature Extraction for Panoramic Image Stitching
+
+用于全景图像拼接的深度特征提取
+
+使用场合:高分辨率全景图像拼接
+
+关键技术:选择场景的矩形区域从训练图像中选择样本，基于RGB、HSL和Lab颜色空间计算感兴趣区域的颜色特征
+
+主要框架:ResNet网络模型
+
+简介
+
+应用场景:本文提出了一种基于深度学习的图像拼接方法，应用于高分辨率全景图像来支持虚拟旅游风景交互。
+
+特征提取:使用深度学习方法来提取图像的特征。
+
+特征定位:此方法通过最大化图像间的图像块相似性度量来直接估计一对图像之间的特征位置。
+
+数据集:从自然旅游场景中收集了大量高分辨率图像和视频进行训练和评估,该数据集是大图像，由46,000张高分辨率图像(5148×3,456)和150个高分辨率视频(1,920×1,088像素)组成。
+
+特征提取
+
+图像预处理 将样本场景中通常相互重叠的多幅图像匹配到同一坐标系的。这些图像之间的空间关系可以是刚性变换、仿射、单应或复杂变形模型。在本研究中，我们致力于提高刚性变换(平移和旋转)情况下的精度，可以更好的支持全景高分辨率图像的拼接。
+
+样本选择 通过选择场景的矩形区域从训练图像中选择样本。基于RGB、HSL和Lab颜色空间计算感兴趣区域的颜色特征。在HSL空间中，用均值和鲁棒性来表示斑点区域的颜色特征。
+
+训练模型 在预训练ResNet的基础上，并对输入层和最后的全连接层改造，第一层的输入图像为[1920,1088,3]，采用7×7卷积块进行Batch Normalization和RELU. RANSAC剔除错误点。
+
+图像增强  在实验中，应用了以下几种数据增强：
+
+色彩归一化与均衡化：采集不同来源、不同光照条件、不同类型设备的人脸图像。
+
+几何变换：仿射变换，如剪切、扭曲和缩放，随机扭曲笔划数据用于图像分类。因此，仿射变换非常适合于增加数据，以提高整体性能并减轻训练任务的过度拟合。
+
+我们使用了多种重采样技术，例如旋转，拉伸，剪切：-10°至10°角度的随机旋转，-10°至10°角度的随机剪切；随机剪切拉伸，拉伸因子在5°到15°之间。
+
+
+" />
+    <meta property="og:description" content="Deep Feature Extraction for Panoramic Image Stitching
+
+用于全景图像拼接的深度特征提取
+
+使用场合:高分辨率全景图像拼接
+
+关键技术:选择场景的矩形区域从训练图像中选择样本，基于RGB、HSL和Lab颜色空间计算感兴趣区域的颜色特征
+
+主要框架:ResNet网络模型
+
+简介
+
+应用场景:本文提出了一种基于深度学习的图像拼接方法，应用于高分辨率全景图像来支持虚拟旅游风景交互。
+
+特征提取:使用深度学习方法来提取图像的特征。
+
+特征定位:此方法通过最大化图像间的图像块相似性度量来直接估计一对图像之间的特征位置。
+
+数据集:从自然旅游场景中收集了大量高分辨率图像和视频进行训练和评估,该数据集是大图像，由46,000张高分辨率图像(5148×3,456)和150个高分辨率视频(1,920×1,088像素)组成。
+
+特征提取
+
+图像预处理 将样本场景中通常相互重叠的多幅图像匹配到同一坐标系的。这些图像之间的空间关系可以是刚性变换、仿射、单应或复杂变形模型。在本研究中，我们致力于提高刚性变换(平移和旋转)情况下的精度，可以更好的支持全景高分辨率图像的拼接。
+
+样本选择 通过选择场景的矩形区域从训练图像中选择样本。基于RGB、HSL和Lab颜色空间计算感兴趣区域的颜色特征。在HSL空间中，用均值和鲁棒性来表示斑点区域的颜色特征。
+
+训练模型 在预训练ResNet的基础上，并对输入层和最后的全连接层改造，第一层的输入图像为[1920,1088,3]，采用7×7卷积块进行Batch Normalization和RELU. RANSAC剔除错误点。
+
+图像增强  在实验中，应用了以下几种数据增强：
+
+色彩归一化与均衡化：采集不同来源、不同光照条件、不同类型设备的人脸图像。
+
+几何变换：仿射变换，如剪切、扭曲和缩放，随机扭曲笔划数据用于图像分类。因此，仿射变换非常适合于增加数据，以提高整体性能并减轻训练任务的过度拟合。
+
+我们使用了多种重采样技术，例如旋转，拉伸，剪切：-10°至10°角度的随机旋转，-10°至10°角度的随机剪切；随机剪切拉伸，拉伸因子在5°到15°之间。
+
+
+" />
+    
+    <meta name="author" content="MarkWang" />
+
+    
+    <meta property="og:title" content="Deep Feature Extraction for Panoramic Image Stitching" />
+    <meta property="twitter:title" content="Deep Feature Extraction for Panoramic Image Stitching" />
+    
+  <!-- Async font loading -->
+<script>
+  window.WebFontConfig = {
+      custom: {
+          families: ['Spoqa Han Sans:100,300,400,700'],
+          urls: ['https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css']
+      },
+      timeout: 60000
+  };
+  (function(d) {
+      var wf = d.createElement('script'), s = d.scripts[0];
+      wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js';
+      s.parentNode.insertBefore(wf, s);
+  })(document);
+</script>
+
+<!--adobe fonts-->
+<script>
+    (function(d) {
+      var config = {
+        kitId: 'vbt3gjx',
+        scriptTimeout: 3000,
+        async: true
+      },
+      h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+    })(document);
+</script> 
+
+  <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link rel="stylesheet" type="text/css" href="/MarkWang/style.css" />
+  <link rel="alternate" type="application/rss+xml" title="MarkWang - MarkWang个人博客" href="/MarkWang/feed.xml" />
+  <link rel="shortcut icon" href="https://i.loli.net/2020/03/05/GXEHsRbQyfKkdIN.jpg">
+  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        inlineMath: [['$','$']]
+      }
+    });
+  </script>
+
+  <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+
+</head>
+
+  <body>
+    <div class="wrapper-sidebar">
+  <header class="sidebar clearfix">
+    <div class="site-info">
+      
+        <a href="/MarkWang/" class="site-avatar"><img src="https://i.loli.net/2020/03/05/GXEHsRbQyfKkdIN.jpg" /></a>
+      
+      <h1 class="site-name"><a href="/MarkWang/">MarkWang</a></h1>
+      <p class="site-description">MarkWang个人博客</p>
+    </div>
+  </header>
+
+  <div class="navlist">
+    <nav>
+      
+      
+      <a href="/MarkWang/">首页</a>
+      
+      
+      
+      <a href="/MarkWang/about">关于</a>
+      
+      
+      
+      <a href="/MarkWang/archive">归档</a>
+      
+      
+      
+      <a href="/MarkWang/tags">标签</a>
+      
+      
+    </nav>
+  </div>
+
+  <div class="wrapper-footer-desktop">
+    <footer class="footer">
+      <!-- Refer to https://codepen.io/ruandre/pen/howFi -->
+<ul class="svg-icon">
+
+  
+  <li><a href="https://www.weibo.com/1607822463" class="icon-1 weibo" title="Weibo"><svg viewBox="0 0 512 512"><path d="M407 177.6c7.6-24-13.4-46.8-37.4-41.7-22 4.8-28.8-28.1-7.1-32.8 50.1-10.9 92.3 37.1 76.5 84.8-6.8 21.2-38.8 10.8-32-10.3zM214.8 446.7C108.5 446.7 0 395.3 0 310.4c0-44.3 28-95.4 76.3-143.7C176 67 279.5 65.8 249.9 161c-4 13.1 12.3 5.7 12.3 6 79.5-33.6 140.5-16.8 114 51.4-3.7 9.4 1.1 10.9 8.3 13.1 135.7 42.3 34.8 215.2-169.7 215.2zm143.7-146.3c-5.4-55.7-78.5-94-163.4-85.7-84.8 8.6-148.8 60.3-143.4 116s78.5 94 163.4 85.7c84.8-8.6 148.8-60.3 143.4-116zM347.9 35.1c-25.9 5.6-16.8 43.7 8.3 38.3 72.3-15.2 134.8 52.8 111.7 124-7.4 24.2 29.1 37 37.4 12 31.9-99.8-55.1-195.9-157.4-174.3zm-78.5 311c-17.1 38.8-66.8 60-109.1 46.3-40.8-13.1-58-53.4-40.3-89.7 17.7-35.4 63.1-55.4 103.4-45.1 42 10.8 63.1 50.2 46 88.5zm-86.3-30c-12.9-5.4-30 .3-38 12.9-8.3 12.9-4.3 28 8.6 34 13.1 6 30.8.3 39.1-12.9 8-13.1 3.7-28.3-9.7-34zm32.6-13.4c-5.1-1.7-11.4.6-14.3 5.4-2.9 5.1-1.4 10.6 3.7 12.9 5.1 2 11.7-.3 14.6-5.4 2.8-5.2 1.1-10.9-4-12.9z"></svg></a></li>
+  
+  
+  
+
+  
+
+  
+  <li><a href="mailto:416215983@qq.com" class="icon-8 email" title="Email"><svg viewBox="0 0 512 512"><path d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"/></svg><!--[if lt IE 9]><em>Email</em><![endif]--></a></li>
+  
+
+  
+
+  
+
+  
+  <li><a href="https://github.com/416215983" class="icon-13 github" title="GitHub"><svg viewBox="0 0 512 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg><!--[if lt IE 9]><em>GitHub</em><![endif]--></a></li>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</ul>
+
+
+
+<p>Copyright (c) 2020 来自MarkWang</p>
+
+
+
+
+    </footer>
+  </div>
+</div>
+
+
+    
+      <aside class="toc">
+        <ul>
+  <li><a href="#">Deep Feature Extraction for Panoramic Image Stitching</a>
+    <ul>
+      <li><a href="#简介">简介</a></li>
+      <li><a href="#特征提取">特征提取</a></li>
+    </ul>
+  </li>
+</ul>
+      </aside>
+    
+
+    <div id="main" role="main" class="wrapper-content">
+      <div class="container">
+        <article class="posts">
+  <h1>Deep Feature Extraction for Panoramic Image Stitching</h1>
+
+  <div clsss="meta">
+    <span class="author">
+      
+    </span>
+
+    <span class="date">
+      2020-04-22
+    </span>
+
+    <ul class="tag">
+      
+      <li>
+        <a href="http://localhost:4000/MarkWang/tags#Deep Learning">
+          Deep Learning
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:4000/MarkWang/tags#Feature">
+          Feature
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:4000/MarkWang/tags#Image Stitching">
+          Image Stitching
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:4000/MarkWang/tags#ResNet">
+          ResNet
+        </a>
+      </li>
+      
+    </ul>
+      <div>
+          <span id="busuanzi_container_page_pv">
+            <p>本文总阅读量<span id="busuanzi_value_page_pv"></span>次</p>
+          </span>
+      </div>
+
+  </div>
+
+  <div class="entry">
+    <p>Deep Feature Extraction for Panoramic Image Stitching</p>
+
+<p>用于全景图像拼接的深度特征提取</p>
+
+<p><strong>使用场合</strong>:高分辨率全景图像拼接</p>
+
+<p><strong>关键技术</strong>:选择场景的矩形区域从训练图像中选择样本，基于RGB、HSL和Lab颜色空间计算感兴趣区域的颜色特征</p>
+
+<p><strong>主要框架</strong>:ResNet网络模型</p>
+
+<h4 id="简介">简介</h4>
+
+<p><strong>应用场景</strong>:本文提出了一种基于深度学习的图像拼接方法，应用于高分辨率全景图像来支持虚拟旅游风景交互。</p>
+
+<p><strong>特征提取</strong>:使用深度学习方法来提取图像的特征。</p>
+
+<p><strong>特征定位</strong>:此方法通过最大化图像间的图像块相似性度量来直接估计一对图像之间的特征位置。</p>
+
+<p><strong>数据集</strong>:从自然旅游场景中收集了大量高分辨率图像和视频进行训练和评估,该数据集是大图像，由46,000张高分辨率图像(5148×3,456)和150个高分辨率视频(1,920×1,088像素)组成。</p>
+
+<h4 id="特征提取">特征提取</h4>
+
+<p><strong>图像预处理</strong> 将样本场景中通常相互重叠的多幅图像匹配到同一坐标系的。这些图像之间的空间关系可以是刚性变换、仿射、单应或复杂变形模型。在本研究中，我们致力于提高刚性变换(平移和旋转)情况下的精度，可以更好的支持全景高分辨率图像的拼接。</p>
+
+<p><strong>样本选择</strong> 通过选择场景的矩形区域从训练图像中选择样本。基于RGB、HSL和Lab颜色空间计算感兴趣区域的颜色特征。在HSL空间中，用均值和鲁棒性来表示斑点区域的颜色特征。</p>
+
+<p><strong>训练模型</strong> 在预训练ResNet的基础上，并对输入层和最后的全连接层改造，第一层的输入图像为[1920,1088,3]，采用7×7卷积块进行Batch Normalization和RELU. RANSAC剔除错误点。</p>
+
+<p><strong>图像增强</strong>  在实验中，应用了以下几种数据增强：</p>
+
+<p>色彩归一化与均衡化：采集不同来源、不同光照条件、不同类型设备的人脸图像。</p>
+
+<p>几何变换：仿射变换，如剪切、扭曲和缩放，随机扭曲笔划数据用于图像分类。因此，仿射变换非常适合于增加数据，以提高整体性能并减轻训练任务的过度拟合。</p>
+
+<p>我们使用了多种重采样技术，例如旋转，拉伸，剪切：-10°至10°角度的随机旋转，-10°至10°角度的随机剪切；随机剪切拉伸，拉伸因子在5°到15°之间。</p>
+
+<p><img src="https://raw.githubusercontent.com/416215983/MarkWang/master/_posts/images/image-20200424013203285.png" alt="image-20200424013203285" /></p>
+
+  </div>
+
+  
+<div class="comments">
+	<div id="disqus_thread"></div>
+	<script type="text/javascript">
+
+	    var disqus_shortname = 'MarkWang';
+
+	    (function() {
+	        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	    })();
+
+	</script>
+	<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+  
+</article>
+
+<div class="pagination">
+  
+    <span class="prev" >
+      <a href="http://localhost:4000/MarkWang/firstblog/">
+        ← 上一篇
+      </a>
+    </span>
+  
+  
+    <span class="next" >
+      <a href="http://localhost:4000/MarkWang/Automatic-Field-of-View-Expansion-using-Deep-Features-and-Image-Stitching/">
+        下一篇 →
+      </a>
+    </span>
+  
+
+</div>
+
+      </div>
+        <div style="margin-left: 15px; font-size: 10pt">
+            <span id="busuanzi_container_site_pv">
+        本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span><span id="busuanzi_container_site_uv">
+        本站访客数<span id="busuanzi_value_site_uv"></span>人次
+        </span>
+        </div>
+    </div>
+
+    
+
+  </body>
+
+  
+  <script>
+    document.getElementById("main").classList.add("withtoc");
+  </script>
+  
+
+  <div class="wrapper-footer-mobile">
+    <footer class="footer">
+      <!-- Refer to https://codepen.io/ruandre/pen/howFi -->
+<ul class="svg-icon">
+
+  
+  <li><a href="https://www.weibo.com/1607822463" class="icon-1 weibo" title="Weibo"><svg viewBox="0 0 512 512"><path d="M407 177.6c7.6-24-13.4-46.8-37.4-41.7-22 4.8-28.8-28.1-7.1-32.8 50.1-10.9 92.3 37.1 76.5 84.8-6.8 21.2-38.8 10.8-32-10.3zM214.8 446.7C108.5 446.7 0 395.3 0 310.4c0-44.3 28-95.4 76.3-143.7C176 67 279.5 65.8 249.9 161c-4 13.1 12.3 5.7 12.3 6 79.5-33.6 140.5-16.8 114 51.4-3.7 9.4 1.1 10.9 8.3 13.1 135.7 42.3 34.8 215.2-169.7 215.2zm143.7-146.3c-5.4-55.7-78.5-94-163.4-85.7-84.8 8.6-148.8 60.3-143.4 116s78.5 94 163.4 85.7c84.8-8.6 148.8-60.3 143.4-116zM347.9 35.1c-25.9 5.6-16.8 43.7 8.3 38.3 72.3-15.2 134.8 52.8 111.7 124-7.4 24.2 29.1 37 37.4 12 31.9-99.8-55.1-195.9-157.4-174.3zm-78.5 311c-17.1 38.8-66.8 60-109.1 46.3-40.8-13.1-58-53.4-40.3-89.7 17.7-35.4 63.1-55.4 103.4-45.1 42 10.8 63.1 50.2 46 88.5zm-86.3-30c-12.9-5.4-30 .3-38 12.9-8.3 12.9-4.3 28 8.6 34 13.1 6 30.8.3 39.1-12.9 8-13.1 3.7-28.3-9.7-34zm32.6-13.4c-5.1-1.7-11.4.6-14.3 5.4-2.9 5.1-1.4 10.6 3.7 12.9 5.1 2 11.7-.3 14.6-5.4 2.8-5.2 1.1-10.9-4-12.9z"></svg></a></li>
+  
+  
+  
+
+  
+
+  
+  <li><a href="mailto:416215983@qq.com" class="icon-8 email" title="Email"><svg viewBox="0 0 512 512"><path d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"/></svg><!--[if lt IE 9]><em>Email</em><![endif]--></a></li>
+  
+
+  
+
+  
+
+  
+  <li><a href="https://github.com/416215983" class="icon-13 github" title="GitHub"><svg viewBox="0 0 512 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg><!--[if lt IE 9]><em>GitHub</em><![endif]--></a></li>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</ul>
+
+
+
+<p>Copyright (c) 2020 来自MarkWang</p>
+
+
+
+
+    </footer>
+
+
+</html>
