@@ -34,9 +34,10 @@ layout: default
   <div class="entry">
     {{ content }}
   </div>
-
-  {% include disqus.html %}
-  {% include gitalk.html %}
+    {% if page.comments %}
+    {% include disqus.html %}
+    {% include gitalk.html %}
+    {% endif %}
 </article>
 
 <div class="pagination">
