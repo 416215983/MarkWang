@@ -1,12 +1,14 @@
 ---
 layout: post
-title: 针对大视差图像拼接的显性子平面配准
+title: Dominant sub-plane registration algorithm for large parallax image stitching
 date: 2020-05-03
 Author: Mark Wang 
 tags: [image stitching, image registration, large parallax image, clustering, dominant sub-plane]
 comments: true
 toc: true
 ---
+
+Dominant sub-plane registration algorithm for large parallax image stitching
 
 针对大视差图像拼接的显性子平面配准
 
