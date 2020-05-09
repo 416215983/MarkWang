@@ -32,9 +32,9 @@ AANAP算法结合了投影变换、相似变换和仿射变换，能够有效处
 
 在计算全局相似变换后，利用全局相似变换来调整目标图像的变换，以减轻全景图中的透视失真，如果只调整非重叠区域的变换，拼接结果可能会产生不自然的视觉效果。因此，使用以下公式将整个目标图像的局部变换逐步更新为全局相似性变换：
 
-![image-20200507015533842](/Users/mark/Desktop/blogSite/_posts/images/image-20200507015533842.png)
+![image-20200507015533842](https://raw.githubusercontent.com/416215983/MarkWang/master/_posts/images/image-20200507015533842.png)
 
 用全局相似性变换更新目标图像的变换会导致先前对准的参考图像和目标图像之间的重叠区域不对准。因此，我们需要通过适当地将改变从目标图像传播到参考图像来补偿改变。现在可以获得参考图像的局部变换为：
 
-![image-20200507015446825](/Users/mark/Desktop/blogSite/_posts/images/image-20200507015446825.png)
+![image-20200507015446825](https://raw.githubusercontent.com/416215983/MarkWang/master/_posts/images/image-20200507015446825.png)
 

@@ -60,7 +60,7 @@ Natural Image Stitching with the Global Similarity Prior
 
 拼接方法基于网格的图像变形来缝合图像
 
-![image-20200508115556454](/Users/mark/Desktop/blogSite/_posts/images/image-20200508115556454.png)
+![image-20200508115556454](https://raw.githubusercontent.com/416215983/MarkWang/master/_posts/images/image-20200508115556454.png)
 
 对齐项Ψa：通过使匹配点与其对应关系对齐来确保变形后的对齐质量。
 
@@ -68,15 +68,15 @@ Natural Image Stitching with the Global Similarity Prior
 
 全局相似度Ψg：要求每个变形图像都尽可能进行相似性变换。
 
-![image-20200508115840481](/Users/mark/Desktop/blogSite/_posts/images/image-20200508115840481.png)
+![image-20200508115840481](https://raw.githubusercontent.com/416215983/MarkWang/master/_posts/images/image-20200508115840481.png)
 
-权重函数 ![[公式]](https://www.zhihu.com/equation?tex=e_%7Bi%7D%5E%7Bj%7D) 将更多权重分配给远离重叠区域的边缘。 对于重叠区域中的四边形，对齐起着更重要的作用。 另一方面，对于远离重叠区域的边缘，相似性先验更重要，因为没有对齐约束。
+权重函数 $e_j^i$ 将更多权重分配给远离重叠区域的边缘。 对于重叠区域中的四边形，对齐起着更重要的作用。 另一方面，对于远离重叠区域的边缘，相似性先验更重要，因为没有对齐约束。
 
-![image-20200508120615349](/Users/mark/Desktop/blogSite/_posts/images/image-20200508120615349.png)
+![image-20200508120615349](https://raw.githubusercontent.com/416215983/MarkWang/master/_posts/images/image-20200508120615349.png)
 
 网格的最佳变形由以下因素确定：
 
-![image-20200508120730505](/Users/mark/Desktop/blogSite/_posts/images/image-20200508120730505.png)
+![image-20200508120730505](https://raw.githubusercontent.com/416215983/MarkWang/master/_posts/images/image-20200508120730505.png)
 
 
 
@@ -90,9 +90,9 @@ Natural Image Stitching with the Global Similarity Prior
 
 旋转选择（2D方法）
 
-![image-20200508122308202](/Users/mark/Desktop/blogSite/_posts/images/image-20200508122308202.png)
+![image-20200508122308202](https://raw.githubusercontent.com/416215983/MarkWang/master/_posts/images/image-20200508122308202.png)
 
 旋转选择（3D方法）
 
-![image-20200508122329859](/Users/mark/Desktop/blogSite/_posts/images/image-20200508122329859.png)
+![image-20200508122329859](https://raw.githubusercontent.com/416215983/MarkWang/master/_posts/images/image-20200508122329859.png)
 

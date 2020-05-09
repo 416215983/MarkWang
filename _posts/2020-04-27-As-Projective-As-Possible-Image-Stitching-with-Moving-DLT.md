@@ -26,4 +26,4 @@ APAP是图像拼接中图像配准的一种算法，他们将图像分成*C*1×*
 6.遍历每个网格，利用局部单应性矩阵映射到全景画布上，就得到了APAP变换后的源图
 7.最后就是进行拼接线的加权融合
 
-<img src="/Users/mark/Desktop/blogSite/_posts/images/image-20200505032131820.png" alt="image-20200505032131820" style="zoom: 50%;" />
+<img src="https://raw.githubusercontent.com/416215983/MarkWang/master/_posts/images/image-20200505032131820.png" alt="image-20200505032131820" style="zoom: 50%;" />

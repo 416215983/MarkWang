@@ -32,7 +32,7 @@ Average Linkage的计算方法是计算两个组合数据点中的每个数据�
 
 #### 图像拼接
 
-![image-20200507162428164](/Users/mark/Desktop/blogSite/_posts/images/image-20200507162428164.png)
+![image-20200507162428164](https://raw.githubusercontent.com/416215983/MarkWang/master/_posts/images/image-20200507162428164.png)
 
 配准精度
 
