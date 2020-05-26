@@ -44,7 +44,7 @@ Image Stitching with Positional Relationship Constraints of Feature Points and L
 
 在目标图像中，任何点p都可以通过其所在网格的四个顶点V = [v1，v2，v3，v4] T的直线组合来确定。我们使用双线性插值来确定点p的位置：p = wT V，其中插值权重w = [ω1，ω2，ω3，ω4] T并在（Zhang et al。，2016）中计算。因此，图像变换可以看作是网格变换。约束条件的详细信息如下。
 
-![image-20200521221702207](/Users/mark/Desktop/blogSite/_posts/images/image-20200521221702207.png)
+![image-20200521221702207](https://raw.githubusercontent.com/416215983/MarkWang/master/_posts/images/image-20200521221702207.png)
 
 点对齐项Ep
 

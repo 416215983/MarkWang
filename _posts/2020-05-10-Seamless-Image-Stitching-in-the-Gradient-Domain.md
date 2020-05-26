@@ -22,7 +22,7 @@ Seamless Image Stitching in the Gradient Domain
 
 具体地，令I1，I2为两个对齐的输入图像。设τ1（τ2分别）是图像I1（I2分别）中各自的区域，设ω为重叠区域，如图，其中τ1 ∩ τ2 = τ1 ∩ ω = τ2 ∩ ω = ∅。令W为加权遮罩图像。
 
-<img src="/Users/mark/Desktop/blogSite/_posts/images/image-20200521232854024.png" alt="image-20200521232854024" style="zoom:50%;" />
+<img src="https://raw.githubusercontent.com/416215983/MarkWang/master/_posts/images/image-20200521232854024.png" alt="image-20200521232854024" style="zoom:50%;" />
 
 将GIST1的拼接结果I定义为Ep相对于I^的最小值:
 
@@ -30,7 +30,7 @@ Seamless Image Stitching in the Gradient Domain
 
 其中U是均匀图像，而dp（J1，J2，φ，W）是J1，J2之间的距离在φ上：
 
-![image-20200522000509748](/Users/mark/Library/Application Support/typora-user-images/image-20200522000509748.png)
+![image-20200522000509748](https://raw.githubusercontent.com/416215983/MarkWang/master/_posts/images/image-20200522000509748.png)
 
 ∥·∥p表示lp范数。
 
